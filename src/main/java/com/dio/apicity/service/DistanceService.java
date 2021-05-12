@@ -14,10 +14,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import com.dio.apicity.entities.City;
 import com.dio.apicity.repositories.CityRepository;
+import com.dio.apicity.utils.StringLocationUtils;
 
 @Service
 public class DistanceService {
@@ -38,14 +38,14 @@ public class DistanceService {
    * @return
    */
   public Double distanceUsingMath(final Long city1, final Long city2, final EarthRadius unit) {
-    log.info("distanceUsingMath({}, {}, {})", city1, city2, unit);
-    final List<City> cities = cityRepository.findAllById((Arrays.asList(city1, city2)));
+	    log.info("distanceUsingMath({}, {}, {})", city1, city2, unit);
+	    final List<City> cities = cityRepository.findAllById((Arrays.asList(city1, city2)));
 
-    final Double[] location1 = StringUtils.transform(cities.get(0).getGeolocation());
-    final Double[] location2 = StringUtils.transform(cities.get(1).getGeolocation());
+	    final Double[] location1 = StringLocationUtils.transform(cities.get(0).getGeolocation());
+	    final Double[] location2 = StringLocationUtils.transform(cities.get(1).getGeolocation());
 
-    return doCalculation(location1[0], location1[1], location2[0], location2[1], unit);
-  }
+	    return doCalculation(location1[0], location1[1], location2[0], location2[1], unit);
+	  }
 
   /**
    * 2nd option
