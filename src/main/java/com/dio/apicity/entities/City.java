@@ -26,23 +26,23 @@ import lombok.Setter;
 @Getter @Setter
 public class City {
 
-  @Id
-  private Long id;
+    @Id
+    private Long id;
 
-  @Column(name = "nome")
-  private String name;
+    @Column(name = "nome")
+    private String name;
 
-  private Integer uf;
+    private Integer uf;
 
-  private Integer ibge;
+    private Integer ibge;
 
-  // 1st
-  @Column(name = "lat_lon")
-  private String geolocation;
+    // 1st
+    @Column(name = "lat_lon")
+    private String geolocation;
 
-  // 2nd
-  @Type(type = "point")
-  @Column(name = "lat_lon", updatable = false, insertable = false)
-  private Point location;
+    // 2nd
+    @Type(type = "point")
+    @Column(name = "lat_lon", updatable = false, insertable = false)
+    private Point location;
   
 }
